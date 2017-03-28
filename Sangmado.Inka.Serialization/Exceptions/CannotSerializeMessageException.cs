@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace RockStone.Inka.Serialization
+namespace Sangmado.Inka.Serialization
 {
     [Serializable]
     public class CannotSerializeMessageException : Exception

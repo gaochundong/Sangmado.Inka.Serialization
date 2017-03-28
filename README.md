@@ -1,1 +1,1 @@
-# RockStone.Inka.Serialization
+# Sangmado.Inka.Serialization

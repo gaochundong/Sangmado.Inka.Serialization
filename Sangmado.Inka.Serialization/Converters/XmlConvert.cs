@@ -3,7 +3,7 @@ using System.IO;
 using System.Xml;
 using System.Xml.Serialization;
 
-namespace RockStone.Inka.Serialization
+namespace Sangmado.Inka.Serialization
 {
     public class XmlConvert
     {

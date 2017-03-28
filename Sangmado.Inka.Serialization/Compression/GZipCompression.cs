@@ -1,7 +1,7 @@
 ﻿using System.IO;
 using System.IO.Compression;
 
-namespace RockStone.Inka.Serialization
+namespace Sangmado.Inka.Serialization
 {
     public static class GZipCompression
     {

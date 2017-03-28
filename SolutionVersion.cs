@@ -1,9 +1,9 @@
 ﻿using System.Reflection;
 using System.Runtime.InteropServices;
 
-[assembly: AssemblyDescription("RockStone.Inka.Serialization")]
+[assembly: AssemblyDescription("Sangmado.Inka.Serialization")]
 [assembly: AssemblyCompany("Dennis Gao")]
-[assembly: AssemblyProduct("RockStone.Inka.Serialization")]
+[assembly: AssemblyProduct("Sangmado.Inka.Serialization")]
 [assembly: AssemblyCopyright("Copyright © 2015-2017, Dennis Gao, All rights reserved.")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyConfiguration("")]

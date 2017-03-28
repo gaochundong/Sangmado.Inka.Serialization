@@ -1,5 +1,5 @@
 ﻿
-namespace RockStone.Inka.Serialization
+namespace Sangmado.Inka.Serialization
 {
     public enum Formatting
     {

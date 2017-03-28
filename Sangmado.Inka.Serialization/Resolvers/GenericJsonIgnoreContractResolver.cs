@@ -3,7 +3,7 @@ using System.Reflection;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 
-namespace RockStone.Inka.Serialization
+namespace Sangmado.Inka.Serialization
 {
     internal class GenericJsonIgnoreContractResolver : DefaultContractResolver
     {
