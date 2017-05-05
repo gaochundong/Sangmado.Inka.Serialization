@@ -8,7 +8,7 @@ namespace Sangmado.Inka.Serialization
             {
                 Formatting = Newtonsoft.Json.Formatting.None,
                 ConstructorHandling = Newtonsoft.Json.ConstructorHandling.AllowNonPublicDefaultConstructor,
-                TypeNameHandling = Newtonsoft.Json.TypeNameHandling.Auto,
+                TypeNameHandling = Newtonsoft.Json.TypeNameHandling.None,
                 ContractResolver = GenericJsonIgnoreContractResolver.Singleton(),
                 DateTimeZoneHandling = Newtonsoft.Json.DateTimeZoneHandling.Utc,
                 DateFormatHandling = Newtonsoft.Json.DateFormatHandling.IsoDateFormat,
@@ -23,7 +23,7 @@ namespace Sangmado.Inka.Serialization
             {
                 Formatting = Newtonsoft.Json.Formatting.Indented,
                 ConstructorHandling = Newtonsoft.Json.ConstructorHandling.AllowNonPublicDefaultConstructor,
-                TypeNameHandling = Newtonsoft.Json.TypeNameHandling.Auto,
+                TypeNameHandling = Newtonsoft.Json.TypeNameHandling.None,
                 ContractResolver = GenericJsonIgnoreContractResolver.Singleton(),
                 DateTimeZoneHandling = Newtonsoft.Json.DateTimeZoneHandling.Utc,
                 DateFormatHandling = Newtonsoft.Json.DateFormatHandling.IsoDateFormat,
@@ -38,7 +38,7 @@ namespace Sangmado.Inka.Serialization
             {
                 Formatting = Newtonsoft.Json.Formatting.None,
                 ConstructorHandling = Newtonsoft.Json.ConstructorHandling.AllowNonPublicDefaultConstructor,
-                TypeNameHandling = Newtonsoft.Json.TypeNameHandling.Auto,
+                TypeNameHandling = Newtonsoft.Json.TypeNameHandling.None,
                 ContractResolver = GenericJsonIgnoreContractResolver.Singleton(),
                 DateTimeZoneHandling = Newtonsoft.Json.DateTimeZoneHandling.Utc,
                 DateFormatHandling = Newtonsoft.Json.DateFormatHandling.IsoDateFormat,
