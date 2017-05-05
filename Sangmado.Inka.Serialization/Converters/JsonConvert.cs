@@ -15,7 +15,7 @@ namespace Sangmado.Inka.Serialization
                 DateParseHandling = Newtonsoft.Json.DateParseHandling.DateTime,
                 MissingMemberHandling = Newtonsoft.Json.MissingMemberHandling.Ignore,
                 NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore,
-                DefaultValueHandling = Newtonsoft.Json.DefaultValueHandling.Ignore,
+                DefaultValueHandling = Newtonsoft.Json.DefaultValueHandling.Include,
             };
 
         private readonly static Newtonsoft.Json.JsonSerializerSettings _indentedSerializerSettings =
@@ -30,7 +30,7 @@ namespace Sangmado.Inka.Serialization
                 DateParseHandling = Newtonsoft.Json.DateParseHandling.DateTime,
                 MissingMemberHandling = Newtonsoft.Json.MissingMemberHandling.Ignore,
                 NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore,
-                DefaultValueHandling = Newtonsoft.Json.DefaultValueHandling.Ignore,
+                DefaultValueHandling = Newtonsoft.Json.DefaultValueHandling.Include,
             };
 
         private readonly static Newtonsoft.Json.JsonSerializerSettings _deserializerSettings =
@@ -45,7 +45,7 @@ namespace Sangmado.Inka.Serialization
                 DateParseHandling = Newtonsoft.Json.DateParseHandling.DateTime,
                 MissingMemberHandling = Newtonsoft.Json.MissingMemberHandling.Ignore,
                 NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore,
-                DefaultValueHandling = Newtonsoft.Json.DefaultValueHandling.Ignore,
+                DefaultValueHandling = Newtonsoft.Json.DefaultValueHandling.Include,
             };
 
         public static string SerializeObject(object obj)
