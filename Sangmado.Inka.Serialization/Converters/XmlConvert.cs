@@ -64,5 +64,18 @@ namespace Sangmado.Inka.Serialization
                 return (T)xs.Deserialize(reader);
             }
         }
+
+        public static string Prettify(string xml)
+        {
+            try
+            {
+                System.Xml.Linq.XDocument better = System.Xml.Linq.XDocument.Parse(xml);
+                return better.ToString();
+            }
+            catch
+            {
+                return xml;
+            }
+        }
     }
 }

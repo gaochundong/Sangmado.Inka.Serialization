@@ -63,5 +63,17 @@ namespace Sangmado.Inka.Serialization
         {
             return Newtonsoft.Json.JsonConvert.DeserializeObject<T>(json, _deserializerSettings);
         }
+
+        public static string Prettify(string json)
+        {
+            try
+            {
+                return Newtonsoft.Json.Linq.JToken.Parse(json).ToString(Newtonsoft.Json.Formatting.Indented);
+            }
+            catch
+            {
+                return json;
+            }
+        }
     }
 }
