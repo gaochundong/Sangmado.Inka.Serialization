@@ -75,5 +75,10 @@ namespace Sangmado.Inka.Serialization
                 return json;
             }
         }
+
+        public static T Clone<T>(T obj)
+        {
+            return DeserializeObject<T>(SerializeObject(obj));
+        }
     }
 }

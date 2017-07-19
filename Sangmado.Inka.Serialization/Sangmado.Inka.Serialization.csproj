@@ -56,7 +56,7 @@
     </Compile>
     <Compile Include="Compression\GZipCompression.cs" />
     <Compile Include="Converters\BinaryConvert.cs" />
-    <Compile Include="Converters\Formatting.cs" />
+    <Compile Include="Format\Formatting.cs" />
     <Compile Include="Converters\JsonConvert.cs" />
     <Compile Include="Converters\XmlConvert.cs" />
     <Compile Include="Exceptions\CannotDeserializeMessageException.cs" />
