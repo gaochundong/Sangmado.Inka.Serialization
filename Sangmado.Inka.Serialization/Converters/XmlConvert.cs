@@ -13,45 +13,66 @@ namespace Sangmado.Inka.Serialization
             return SerializeObject(obj.GetType(), obj);
         }
 
+        public static string SerializeObject(object obj, XmlWriterSettings settings)
+        {
+            if (obj == null) return string.Empty;
+            return SerializeObject(obj.GetType(), obj, settings);
+        }
+
+        public static string SerializeObject(object obj, XmlWriterSettings settings, XmlSerializerNamespaces namespaces)
+        {
+            if (obj == null) return string.Empty;
+            return SerializeObject(obj.GetType(), obj, settings, namespaces);
+        }
+
         public static string SerializeObject<T>(T obj)
         {
             return SerializeObject(typeof(T), obj);
         }
 
+        public static string SerializeObject<T>(T obj, XmlWriterSettings settings)
+        {
+            return SerializeObject(typeof(T), obj, settings);
+        }
+
+        public static string SerializeObject<T>(T obj, XmlWriterSettings settings, XmlSerializerNamespaces namespaces)
+        {
+            return SerializeObject(typeof(T), obj, settings, namespaces);
+        }
+
         public static string SerializeObject(Type typeOfObject, object obj)
         {
-            string str = null;
-            MemoryStream ms = null;
+            return SerializeObject(typeOfObject, obj, null);
+        }
 
-            try
+        public static string SerializeObject(Type typeOfObject, object obj, XmlWriterSettings settings)
+        {
+            return SerializeObject(typeOfObject, obj, settings, null);
+        }
+
+        public static string SerializeObject(Type typeOfObject, object obj, XmlWriterSettings settings, XmlSerializerNamespaces namespaces)
+        {
+            if (settings == null)
             {
-                XmlSerializer xs = new XmlSerializer(typeOfObject);
-
-                ms = new MemoryStream();
-                using (var xtw = new XmlTextWriter(ms, System.Text.Encoding.UTF8)
-                {
-                    Formatting = System.Xml.Formatting.Indented
-                })
-                {
-                    ms = null;
-                    xs.Serialize(xtw, obj);
-                    xtw.BaseStream.Seek(0, SeekOrigin.Begin);
-                    using (StreamReader sr = new StreamReader(xtw.BaseStream))
-                    {
-                        str = sr.ReadToEnd();
-                    }
-                }
+                settings = new XmlWriterSettings();
             }
-            finally
+            if (namespaces == null)
             {
-                if (ms != null)
-                {
-                    ms.Close();
-                    ms = null;
-                }
+                namespaces = new XmlSerializerNamespaces();
             }
 
-            return str;
+            using (MemoryStream ms = new MemoryStream())
+            using (StreamWriter sw = new StreamWriter(ms, settings.Encoding))
+            using (XmlWriter xw = XmlWriter.Create(sw, settings))
+            {
+                var xs = new XmlSerializer(typeOfObject);
+                xs.Serialize(xw, obj, namespaces);
+                ms.Seek(0, SeekOrigin.Begin);
+                using (StreamReader sr = new StreamReader(ms, settings.Encoding))
+                {
+                    return sr.ReadToEnd();
+                }
+            }
         }
 
         public static T DeserializeObject<T>(string xml)
@@ -81,30 +102,6 @@ namespace Sangmado.Inka.Serialization
         public static T Clone<T>(T obj)
         {
             return DeserializeObject<T>(SerializeObject(obj));
-        }
-
-
-        public static string SerializeObjectToFlatString<T>(T obj)
-        {
-            return SerializeObjectToFlatString(typeof(T), obj);
-        }
-
-        public static string SerializeObjectToFlatString(Type typeOfObject, object obj)
-        {
-            var emptyNamepsaces = new XmlSerializerNamespaces(new[] { XmlQualifiedName.Empty });
-            var serializer = new XmlSerializer(typeOfObject);
-            var settings = new XmlWriterSettings()
-            {
-                Indent = false,
-                OmitXmlDeclaration = true,
-                NewLineHandling = NewLineHandling.None
-            };
-            using (var stream = new StringWriter())
-            using (var writer = XmlWriter.Create(stream, settings))
-            {
-                serializer.Serialize(writer, obj, emptyNamepsaces);
-                return stream.ToString();
-            }
         }
     }
 }
