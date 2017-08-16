@@ -82,5 +82,29 @@ namespace Sangmado.Inka.Serialization
         {
             return DeserializeObject<T>(SerializeObject(obj));
         }
+
+
+        public static string SerializeObjectToFlatString<T>(T obj)
+        {
+            return SerializeObjectToFlatString(typeof(T), obj);
+        }
+
+        public static string SerializeObjectToFlatString(Type typeOfObject, object obj)
+        {
+            var emptyNamepsaces = new XmlSerializerNamespaces(new[] { XmlQualifiedName.Empty });
+            var serializer = new XmlSerializer(typeOfObject);
+            var settings = new XmlWriterSettings()
+            {
+                Indent = false,
+                OmitXmlDeclaration = true,
+                NewLineHandling = NewLineHandling.None
+            };
+            using (var stream = new StringWriter())
+            using (var writer = XmlWriter.Create(stream, settings))
+            {
+                serializer.Serialize(writer, obj, emptyNamepsaces);
+                return stream.ToString();
+            }
+        }
     }
 }
